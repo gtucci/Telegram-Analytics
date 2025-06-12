@@ -2,16 +2,16 @@
 title: "Telegram Analytics Report"
 subtitle: "Automatically Generated via the Telegram Analytics Pipeline"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
-author: "Designed by the CGIAR FOCUS Climate Security Digital Methods Team"
+author: "Designed by Giulia Tucci as a part of the CGIAR FOCUS Climate Security Digital Methods Team"
 output:
-  html_document:
-    toc_depth: 2
-    theme: readable
   pdf_document:
     toc: true
     toc_depth: 2
     latex_engine: xelatex
     keep_tex: true
+  html_document:
+    toc_depth: 2
+    theme: readable
 ---
 
 # 1. Introduction
@@ -284,7 +284,7 @@ This section presents the **network analyses** generated from the dataset.
 The following **three bipartite networks** were created:
 
 | Network          | Nodes (source → target)                 | Edge weight            | Node types    |
-|-----------------|---------------------|-----------------|-----------------|
+|-----------------|--------------------|-----------------|-----------------|
 | Forwarding       | `fwd_from_author_username` → `username` | Number of forwards     | chat          |
 | Mentions         | `username` → `@mention`                 | Number of mentions     | chat, mention |
 | Channel-Hashtags | `username` → `#hashtag`                 | Number of hashtag uses | chat, hashtag |
@@ -479,21 +479,19 @@ This pipeline enables researchers and analysts to adapt it to multilingual datas
 
 ------------------------------------------------------------------------
 
-## 10. Repository, Licensing, and Credits
+# 10. Repository, Licensing, and Credits
 
 **GitHub Repository**\
 All source code, documentation, and instructions for reproduction are available at:\
-🔗 <https://github.com/gtucci/Telegram-Analytics>
+🔗 <https://github.com/gtucci/Telegram-Analytics>\
 
 **License**\
-This project is released under the [MIT License](https://github.com/gtucci/Telegram-Analytics/blob/main/LICENSE). You are free to reuse, modify, and distribute the code with proper attribution.
+This project is released under the [MIT License](https://github.com/gtucci/Telegram-Analytics/blob/main/LICENSE). You are free to reuse, modify, and distribute the code with proper attribution.\
 
 **How to Cite**\
-Tucci, G. (2025). *Telegram Analytics: A modular pipeline for analyzing public Telegram data*. Retrieved from <https://github.com/gtucci/Telegram-Analytics>
+Tucci, G. (2025). *Telegram Analytics: A modular pipeline for analyzing public Telegram data*. Retrieved from <https://github.com/gtucci/Telegram-Analytics>\
 
 **Acknowledgements**\
-*Telegram Analytics* was developed by Giulia Tucci under the **CGIAR FOCUS Climate Security Digital Methods** **team**.\
-The project was conducted with support from the **CGIAR Science Programs**.\
-I would like to thank all funders who supported this research through their contributions to the [CGIAR Trust Fund](https://www.cgiar.org/funders/).
+*Telegram Analytics* was developed by Giulia Tucci as a part of the **CGIAR FOCUS Climate Security Digital Methods** **team**. The project was conducted with support from the **CGIAR Science Programs**. I would like to thank all funders who supported this research through their contributions to the [CGIAR Trust Fund](https://www.cgiar.org/funders/).\
 
 Thank you for using this pipeline. For suggestions, improvements, or collaborative work, feel free to get in touch.
