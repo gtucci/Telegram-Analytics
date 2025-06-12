@@ -50,7 +50,7 @@ main_analysis.R             # Master pipeline script
 
 1️⃣ Open `Telegram-Analytics.Rproj` in **RStudio**.
 
-2️⃣ Run the master script: `/ source("main_analysis.R")/`
+2️⃣ Run the master script: `source("main_analysis.R") `
 
 3️⃣ The pipeline will prompt you to:
 
