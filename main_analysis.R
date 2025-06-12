@@ -14,7 +14,6 @@ source("scripts/04_popularity_metrics.R")
 source("scripts/05_network_analysis.R")
 source("scripts/06_topic_modeling.R")
 source("scripts/07_link_sharing.R")
-source("scripts/08_visualizations.R")
 
 # Render the analysis report
 rmarkdown::render("reports/analysis_report.Rmd", output_dir = "reports")
