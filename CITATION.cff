@@ -14,5 +14,3 @@ repository-code: https://github.com/gtucci/Telegram-Analytics
 url: https://github.com/gtucci/Telegram-Analytics
 abstract: |
   Telegram Analytics is a modular and reproducible pipeline developed in R for analyzing messages extracted from public Telegram channels. The project includes sentiment analysis, network metrics, topic modeling, and other features based on a structured data processing workflow. Developed under the CGIAR Climate Security Digital Methods initiative.
-
-https://doi.org/10.5281/zenodo.15645166
