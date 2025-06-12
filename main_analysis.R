@@ -16,7 +16,10 @@ source("scripts/06_topic_modeling.R")
 source("scripts/07_link_sharing.R")
 
 # Render the analysis report
-rmarkdown::render("reports/analysis_report.Rmd", output_dir = "reports")
+rmarkdown::render("reports/analysis_report.Rmd", output_format = "all", 
+                  output_dir = "outputs/report")
 
+
+cat("✅ Report saved to outputs/report\n")
 cat("=== FULL ANALYSIS COMPLETED ===\n")
 

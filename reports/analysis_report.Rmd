@@ -8,6 +8,8 @@ output:
     toc_depth: 2
     theme: readable
   pdf_document:
+    toc: true
+    toc_depth: 2
     latex_engine: xelatex
     keep_tex: true
 ---
@@ -282,7 +284,7 @@ This section presents the **network analyses** generated from the dataset.
 The following **three bipartite networks** were created:
 
 | Network          | Nodes (source → target)                 | Edge weight            | Node types    |
-|-----------------|-----------------------|-----------------|-----------------|
+|-----------------|---------------------|-----------------|-----------------|
 | Forwarding       | `fwd_from_author_username` → `username` | Number of forwards     | chat          |
 | Mentions         | `username` → `@mention`                 | Number of mentions     | chat, mention |
 | Channel-Hashtags | `username` → `#hashtag`                 | Number of hashtag uses | chat, hashtag |
