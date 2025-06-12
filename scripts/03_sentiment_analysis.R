@@ -69,19 +69,21 @@ enhanced_sentiment_analysis <- function(data, language = "english") {
   # --- Heatmap --- #
   emotion_long <- monthly_emotions %>%
     select(month, anger:trust) %>%
-    pivot_longer(cols = anger:trust, names_to = "emotion", values_to = "intensity")
+    pivot_longer(cols = anger:trust, names_to = "emotion", values_to = "intensity") %>%
+    mutate(month_date = as.Date(paste0(month, "-01")))
   
-  emotion_heatmap <- ggplot(emotion_long, aes(x = month, y = emotion, fill = intensity)) +
+  emotion_heatmap <- ggplot(emotion_long, aes(x = factor(month), y = emotion, fill = intensity)) +
     geom_tile() +
-    scale_fill_viridis_c(name = "Intensity", direction =-1) +
+    scale_fill_viridis_c(name = "Intensity", direction = -1) +
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     labs(
-      title = paste("Monthly Emotion Intensity Heatmap (", language, ")", sep = ""),
+      title = "Monthly Emotion Intensity Heatmap (portuguese)",
       subtitle = "Average emotion scores across all messages",
       x = "Month",
       y = "Emotion"
-    )
+    ) +
+    scale_x_discrete(breaks = function(x) x[seq(1, length(x), by = 3)])
   
   # Sentiment distribution plot
   sentiment_dist_plot <- sentiment_data %>%

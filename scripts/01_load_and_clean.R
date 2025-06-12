@@ -72,6 +72,50 @@ if (choice == "1") {
 }
 
 cat("=== TOTAL ROWS LOADED: ", nrow(data), " ===\n")
+  
+# --- CHECK EXPECTED COLUMNS ---
+
+expected_columns <- c(
+  "id", 
+  "channel_id", 
+  "username", 
+  "message", 
+  "timestamp", 
+  "type",
+  "country", 
+  "language", 
+  "category", 
+  "views", 
+  "media_type",
+  "media_description", 
+  "media_filename", 
+  "author_type", 
+  "author_id",
+  "author_username", 
+  "author_name",
+  "reply_to_author_type", 
+  "reply_to_author_id", 
+  "reply_to_author_username", 
+  "reply_to_author_name",
+  "fwd_from_author_type", 
+  "fwd_from_author_id", 
+  "fwd_from_author_username", 
+  "fwd_from_author_name"
+)
+
+cat("=== COLUMNS DETECTED IN DATASET ===\n")
+print(colnames(data))
+
+missing_columns <- setdiff(expected_columns, colnames(data))
+
+if (length(missing_columns) > 0) {
+  stop(paste(
+    "ERROR: The following required columns are missing from the dataset:",
+    paste(missing_columns, collapse = ", ")
+  ))
+} else {
+  cat("All expected columns are present.\n")
+}
 
 
 # --- ENHANCED DATA PREPARATION ---
