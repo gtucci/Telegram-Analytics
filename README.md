@@ -46,15 +46,22 @@ main_analysis.R             # Master pipeline script
 
 ------------------------------------------------------------------------
 
-## How to Run the Pipeline
 
-1️⃣ Download and extract the project ZIP file: [![Download ZIP](https://img.shields.io/badge/Download-ZIP-blue)](https://github.com/gtucci/Telegram-Analytics/archive/refs/heads/main.zip)
+## 📦 Quick Start (Download-only Users)
 
-2️⃣ Open `Telegram-Analytics.Rproj` in **RStudio**.
+If you're not using Git and downloaded the ZIP file:
 
-3️⃣ Run the master script: `source("main_analysis.R") `
+1. Click the green **Code** button and select **Download ZIP** or download here  [![Download ZIP](https://img.shields.io/badge/Download-ZIP-blue)](https://github.com/gtucci/Telegram-Analytics/archive/refs/heads/main.zip)
+2. Unzip the folder — GitHub will name it `Telegram-Analytics-main`
+3. (Optional) Rename the folder to `Telegram-Analytics` for clarity
+4. Open the file `Telegram-Analytics.Rproj` in **RStudio**
+5. Run the script `main_analysis.R` to execute the pipeline
 
-4️⃣ The pipeline will prompt you to:
+------------------------------------------------------------------------
+
+   ## About the Pipeline
+
+ The pipeline will prompt you to:
 
 -   Select input data: A folder containing .csv or .tsv files OR a single file anywhere on disk
 -   Select language for sentiment analysis (NRC-supported languages)
@@ -65,7 +72,7 @@ main_analysis.R             # Master pipeline script
     -   Italian
     -   Portuguese
 
-5️⃣ The pipeline will process all steps and generate:
+The pipeline will process all steps and generate:
 
 -   **Cleaned data** → `/data_clean/`
 -   **Plots and CSVs** → `/outputs/`
