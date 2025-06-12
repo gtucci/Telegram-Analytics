@@ -1,0 +1,497 @@
+---
+title: "Telegram Analytics Report"
+subtitle: "Automatically Generated via the Telegram Analytics Pipeline"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+author: "Designed by the CGIAR FOCUS Climate Security Digital Methods Team"
+output:
+  html_document:
+    toc_depth: 2
+    theme: readable
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: true
+---
+
+# 1. Introduction
+
+This presents a comprehensive multi-dimensional analysis of Telegram messages processed through a full R-based analytical pipeline.
+
+It includes:
+
+-   Dataset summary
+-   Temporal trends
+-   Sentiment analysis
+-   Popularity and virality metrics
+-   Network analysis
+-   Topic modeling
+-   Link sharing patterns
+
+------------------------------------------------------------------------
+
+# 2. Dataset Summary
+
+Overview of the data scope, including the number of messages, date range, channels analyzed, and basic metadata indicators.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(here)
+data_enhanced <- readRDS(here::here("data_clean/messages_clean.rds"))
+min(data_enhanced$timestamp)
+
+if (file.exists(here("outputs/overview/dataset_overview.csv"))) {
+  overview <- read_csv(here("outputs/overview/dataset_overview.csv"))
+
+  cat("**DATASET OVERVIEW:**\n")
+  cat("- Total messages analyzed: ", overview$total_messages, "\n")
+  cat("- Date range:", format(min(data_enhanced$timestamp), "%Y-%m-%d %H:%M"),
+    "to", format(max(data_enhanced$timestamp), "%Y-%m-%d %H:%M"), "\n")
+  cat("- Unique channels: ", overview$unique_channels, "\n")
+  cat("- Total views: ", overview$total_views, "\n")
+  cat("- Messages with media: ", overview$messages_with_media, "\n")
+  cat("- Forwarded messages: ", overview$forwarded_messages, "\n")
+  cat("- Reply messages: ", overview$reply_messages, "\n")
+  
+} else {
+  cat("Dataset overview not found. Please run 01_load_and_clean.R first.")
+}
+
+```
+
+------------------------------------------------------------------------
+
+# 3. Temporal Trends
+
+This section illustrates the dynamics of message activity over time, with plots for daily, weekly, monthly, and hourly patterns.
+
+## Daily Temporal Trends
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/temporal_analysis/temporal_trends.png"))) {
+  knitr::include_graphics(here("outputs/temporal_analysis/temporal_trends.png"))
+} else {
+  cat("Plot not found: temporal_trends.png")
+}
+```
+
+## Weekly Patterns
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/temporal_analysis/weekly_patterns.png"))) {
+  knitr::include_graphics(here("outputs/temporal_analysis/weekly_patterns.png"))
+} else {
+  cat("Plot not found: weekly_patterns.png")
+}
+```
+
+## Monthly Patterns
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/temporal_analysis/monthly_patterns.png"))) {
+  knitr::include_graphics(here("outputs/temporal_analysis/monthly_patterns.png"))
+} else {
+  cat("Plot not found: monthly_patterns.png")
+}
+```
+
+## Hourly Patterns
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/temporal_analysis/hourly_patterns.png"))) {
+  knitr::include_graphics(here("outputs/temporal_analysis/hourly_patterns.png"))
+} else {
+  cat("Plot not found: hourly_patterns.png")
+}
+```
+
+------------------------------------------------------------------------
+
+# 4. Sentiment Analysis and Emotion Detection
+
+This section reveals emotional trends and variations across the dataset, providing visualizations such as emotion heatmaps and sentiment distributions.
+
+## Emotion Heatmap
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/sentiment_analysis/emotion_heatmap.png"))) {
+  knitr::include_graphics(here("outputs/sentiment_analysis/emotion_heatmap.png"))
+} else {
+  cat("Emotion heatmap not found.")
+}
+
+```
+
+## Sentiment Distribution
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/sentiment_analysis/sentiment_distribution.png"))) {
+  knitr::include_graphics(here("outputs/sentiment_analysis/sentiment_distribution.png"))
+} else {
+  cat("Sentiment distribution plot not found.")
+}
+
+```
+
+## Monthly Emotions Summary
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+
+if (file.exists(here("outputs/sentiment_analysis/monthly_emotions.csv"))) {
+  monthly_emotions <- read_csv(here("outputs/sentiment_analysis/monthly_emotions.csv"))
+  print(monthly_emotions)
+} else {
+  cat("Monthly emotions CSV not found.")
+}
+```
+
+------------------------------------------------------------------------
+
+# 5. Popularity and Virality Metrics
+
+This section shows the most influential channels and the most viral forwarded sources through ranked tables and scatterplots showing relationships between activity and audience reach. It also includes analyses of mentions and hashtags, represented by frequency tables and visual summaries.
+
+## CHANNEL INFLUENCE ANALYSIS
+
+### Top 20 Most Influential Channels
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/top_channels.png"))) {
+  knitr::include_graphics(here("outputs/popularity/top_channels.png"))
+} else {
+  cat("Plot not found: top_channels.png")
+}
+
+```
+
+### Channel Activity vs. Reach
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/channel_activity.png"))) {
+  knitr::include_graphics(here("outputs/popularity/channel_activity.png"))
+} else {
+  cat("Plot not found: channel_activity.png")
+}
+
+```
+
+### Top 15 Influential Channels Table
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/top_channels.csv"))) {
+  top_channels <- read_csv(here("outputs/popularity/top_channels.csv"))
+  top_channels %>%
+    select(username, message_count, total_views, influence_score) %>%
+    slice_head(n = 15) %>%
+    knitr::kable()
+} else {
+  cat("CSV not found: top_channels.csv")
+}
+```
+
+## FORWARDED SOURCES ANALYSIS
+
+### Top 15 Forwarded Sources Table
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/top_forwarded.csv"))) {
+  top_forwarded <- read_csv(here("outputs/popularity/top_forwarded.csv"))
+  top_forwarded %>%
+    select(fwd_from_author_username, forward_count, unique_forwarders, virality_score) %>%
+    slice_head(n = 15) %>%
+    knitr::kable()
+} else {
+  cat("CSV not found: top_forwarded.csv")
+}
+```
+
+### Top 15 Most Viral Forwarded Sources
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/forwarded_sources.png"))) {
+  knitr::include_graphics(here("outputs/popularity/forwarded_sources.png"))
+} else {
+  cat("Plot not found: forwarded_sources.png")
+}
+```
+
+### Forwarding Behavior Analysis
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/forwarding_behavior.png"))) {
+  knitr::include_graphics(here("outputs/popularity/forwarding_behavior.png"))
+} else {
+  cat("Plot not found: forwarding_behavior.png")
+}
+```
+
+## MENTIONS AND HASHTAGS
+
+### Top 15 Most Mentioned Users
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/entities/top_mentions.png"))) {
+  knitr::include_graphics(here("outputs/popularity/entities/top_mentions.png"))
+} else {
+  cat("Plot not found: top_mentions.png")
+}
+```
+
+### Mentions Table
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/entities/mentions.csv"))) {
+  mentions_tbl <- read_csv(here("outputs/popularity/entities/mentions.csv"))
+  mentions_tbl %>%
+    slice_head(n = 15) %>%
+    knitr::kable()
+} else {
+  cat("CSV not found: mentions.csv")
+}
+```
+
+### Top 15 Most Used Hashtags
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/entities/top_hashtags.png"))) {
+  knitr::include_graphics(here("outputs/popularity/entities/top_hashtags.png"))
+} else {
+  cat("Plot not found: top_hashtags.png")
+}
+```
+
+### Hashtags Table
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
+if (file.exists(here("outputs/popularity/entities/hashtags.csv"))) {
+  hashtags_tbl <- read_csv(here("outputs/popularity/entities/hashtags.csv"))
+  hashtags_tbl %>%
+    slice_head(n = 15) %>%
+    knitr::kable()
+} else {
+  cat("CSV not found: hashtags.csv")
+}
+```
+
+------------------------------------------------------------------------
+
+# 6. Network Analysis
+
+This section presents the **network analyses** generated from the dataset.
+
+## Overview
+
+The following **three bipartite networks** were created:
+
+| Network          | Nodes (source → target)                 | Edge weight            | Node types    |
+|-----------------|-----------------------|-----------------|-----------------|
+| Forwarding       | `fwd_from_author_username` → `username` | Number of forwards     | chat          |
+| Mentions         | `username` → `@mention`                 | Number of mentions     | chat, mention |
+| Channel-Hashtags | `username` → `#hashtag`                 | Number of hashtag uses | chat, hashtag |
+
+### Notes on Node Types:
+
+-   **chat** → Telegram chat: can be a **channel** or a **group**.
+    -   In Telegram exports, `username` and `fwd_from_author_username` represent **chat usernames**.
+-   **mention** → Mentioned `@username` → can be a **user**, **chat**, or **bot**.
+-   **hashtag** → `#hashtag` extracted from message text.
+
+**The author (`author_username`) is not used** in these networks — the focus is on chat-based relations.
+
+## 6.1 Forwarding Network
+
+-   **Edges file:** `outputs/networks/forwarding_edges.csv`
+-   **Nodes file:** `outputs/networks/forwarding_nodes.csv`
+
+### Top 10 Nodes by PageRank:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+forwarding_nodes <-read_csv(here::here("outputs/networks/forwarding_nodes.csv"))
+
+forwarding_nodes %>% arrange(desc(pagerank)) %>% slice_head(n = 10) %>% select(id, pagerank, degree, indegree, outdegree, type)
+
+```
+
+## 6.2 Mentions Network
+
+-   **Edges file:** `outputs/networks/mentions_edges.csv`
+-   **Nodes file:** `outputs/networks/mentions_nodes.csv`
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+mentions_nodes <- read_csv(here::here("outputs/networks/mentions_nodes.csv"))
+
+mentions_nodes %>%
+  arrange(desc(pagerank)) %>%
+  slice_head(n = 10) %>%
+  select(id, pagerank, degree, indegree, outdegree, type)
+```
+
+## 6.3 Channel-Hashtag Network
+
+-   **Edges file:** `outputs/networks/channel_hashtags_edges.csv`
+-   **Nodes file:** `outputs/networks/channel_hashtags_nodes.cs`
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+hashtags_nodes <- read_csv(here::here("outputs/networks/channel_hashtags_nodes.csv"))
+
+hashtags_nodes %>%
+  arrange(desc(pagerank)) %>%
+  slice_head(n = 10) %>%
+  select(id, pagerank, degree, indegree, outdegree, type)
+```
+
+## Summary
+
+The networks provide insights into:
+
+-   Information flows via message forwarding
+
+-   Mention patterns between Telegram entities
+
+-   Top hashtags used by chats
+
+These nodes + edges CSVs are fully compatible with:
+
+-   Gephi
+
+-   Cytoscape
+
+-   NetworkX (Python)
+
+-   igraph (R)
+
+------------------------------------------------------------------------
+
+# 7. Topic Modeling
+
+This section presents the results of an unsupervised topic modeling analysis using the Latent Dirichlet Allocation (LDA) algorithm.
+
+## 7.1 Overview
+
+Topic modeling was applied to the cleaned Telegram messages (`message_clean`), with:
+
+-   **Number of topics**: selected by the user at runtime
+-   **Stopwords**: removed based on user-defined languages and optional custom stopword list
+
+The modeling process includes:
+
+1.  Tokenization and stopword removal\
+2.  Document-Term Matrix (DTM) construction\
+3.  Fitting the LDA model\
+4.  Extraction of top terms per topic\
+5.  Assignment of dominant topic to each document
+
+## 7.2 Top Terms per Topic
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+topic_terms <- read_csv(here::here("outputs/topic_modeling/topic_terms.csv"))
+
+topic_terms %>%
+  group_by(topic) %>%
+  summarise(top_words = paste(term[1:10], collapse = ", ")) %>%
+  knitr::kable(caption = "Top Terms per Topic", align = "l")
+
+```
+
+## 7.3 Distribution of Topics Across Messages
+
+The following table shows the number of messages assigned to each topic:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+doc_topics <- read_csv(here::here("outputs/topic_modeling/document_topics.csv"))
+
+doc_topics %>%
+  count(topic) %>%
+  arrange(desc(n)) %>%
+  knitr::kable(
+    col.names = c("Topic", "Number of Messages"),
+    caption = "Document Count per Topic",
+    align = "c"
+  )
+```
+
+## 7.4 Topic Word Clouds
+
+The following visualizations present word clouds for each discovered topic, illustrating the most prominent terms associated with each cluster.
+
+```{r generate-wordcloud-chunks, include=FALSE}
+source("generate_wordcloud_chunks.R")
+```
+
+```{r wordcloud-combined-grid, echo=FALSE, fig.align='center', out.width='95%'}
+knitr::include_graphics(here::here("outputs", "topic_modeling", "combined_wordclouds_grid.png"))
+```
+
+## 7.5 Distribution of Topics Across Messages
+
+Notes on Interpretation: Topics are automatically generated clusters of co-occurring terms. Interpretation requires human inspection of top words. Messages were assigned to the topic with the highest probability (gamma).
+
+The topic modeling results can be used to guide:
+
+-   Further qualitative analysis
+
+-   Narrative cluster identification
+
+-   Temporal or geographic topic prevalence studies
+
+------------------------------------------------------------------------
+
+# 8. URL sharing
+
+This section analyzes the most frequently shared domains across all messages. The analysis extracts all hyperlinks from the message content and identifies the top domains based on frequency.
+
+```{r shared-domains, echo=FALSE, fig.align='center', out.width='80%'}
+knitr::include_graphics(here::here("outputs", "link_analysis", "top_domains.png"))
+
+```
+
+The figure above shows the 15 most shared domains. These domains reflect the external sources most referenced in the Telegram dataset and may include news outlets, social media, video platforms, and Telegram itself (t.me).
+
+```{r shared-domains-table, echo=FALSE, fig.align='center'}
+library(knitr)
+domain_table <- readr::read_csv(
+  here::here("outputs", "link_analysis", "domain_counts.csv"),
+  show_col_types = FALSE
+)
+kable(
+  head(domain_table, 15),
+  caption = "Top Shared Domains (Full Table Available in CSV)",
+  align = "l"
+)
+
+```
+
+------------------------------------------------------------------------
+
+# 9. Final Considerations
+
+This report presented a modular and extensible pipeline for analyzing Telegram datasets, with a focus on content, structure, and platform dynamics. The analyses included:
+
+-   **Temporal patterns** in message activity;
+-   **Sentiment and emotion** detection using the NRC lexicon;
+-   **Channel influence** and **forwarding networks**, capturing content amplification;
+-   **Entity extraction**, such as hashtags and mentions;
+-   **Topic modeling**, with customizable number of topics and stopword filters;
+-   **External link sharing**, reflecting the circulation of information beyond Telegram.
+
+This pipeline enables researchers and analysts to adapt it to multilingual datasets and evolving research questions related to digital platforms, disinformation, political communication, and OSINT (Open Source Intelligence).
+
+------------------------------------------------------------------------
+
+## 10. Repository, Licensing, and Credits
+
+**GitHub Repository**\
+All source code, documentation, and instructions for reproduction are available at:\
+🔗 <https://github.com/gtucci/Telegram-Analytics>
+
+**License**\
+This project is released under the [MIT License](https://github.com/gtucci/Telegram-Analytics/blob/main/LICENSE). You are free to reuse, modify, and distribute the code with proper attribution.
+
+**How to Cite**\
+Tucci, G. (2025). *Telegram Analytics: A modular pipeline for analyzing public Telegram data*. Retrieved from <https://github.com/gtucci/Telegram-Analytics>
+
+**Acknowledgements**\
+*Telegram Analytics* was developed by Giulia Tucci under the **CGIAR FOCUS Climate Security Digital Methods** **team**.\
+The project was conducted with support from the **CGIAR Science Programs**.\
+I would like to thank all funders who supported this research through their contributions to the [CGIAR Trust Fund](https://www.cgiar.org/funders/).
+
+Thank you for using this pipeline. For suggestions, improvements, or collaborative work, feel free to get in touch.

@@ -46,7 +46,14 @@ Thumbs.db
 /data_raw/
 /data_clean/
 
-# Ignore generated outputs and reports
+# Ignore generated outputs
 /outputs/
-/reports/
+
+# Ignore everything in reports/
+reports/*
+
+# But keep report source files
+!reports/*.Rmd
+!reports/*.R
+
 
