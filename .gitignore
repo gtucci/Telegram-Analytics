@@ -21,7 +21,7 @@
 .Rproj.user/
 
 # RStudio project file
-*.Rproj
+#*.Rproj
 
 # Database and cache files
 *.sqlite
