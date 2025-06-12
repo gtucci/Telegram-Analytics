@@ -15,7 +15,10 @@ It includes:
     -   Channel influence
     -   Forwarded sources
     -   Mentions & Hashtags
--   **Network analysis** 
+-   **Network analysis**
+    -   Forwarding Network
+    -   Mentions Network
+    -   Channel-Hashtag Network
 -   **Topic modeling** 
 -   **Link sharing analysis** 
 -   **Automated reporting** 
@@ -32,9 +35,9 @@ It includes:
     /sentiment_analysis/    # Sentiment plots and CSV
     /popularity/            # Popularity metrics
         /entities/          # Mentions & Hashtags
-    /networks/              # (Planned)
-    /lda_topics/            # (Planned)
-    /link_sharing/          # (Planned)
+    /networks/              # Nodes & Edges tables (CSV)
+    /lda_topics/            # Topic Modeling and word clouds per topic
+    /link_sharing/          # Top domains
 /reports/                   # Final analysis report
 /scripts/                   # Modular analysis scripts
 Telegram-Analytics.Rproj    # RStudio project
