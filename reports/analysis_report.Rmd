@@ -4,19 +4,20 @@ subtitle: "Automatically Generated via the Telegram Analytics Pipeline"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 author: "Designed by Giulia Tucci as a part of the CGIAR FOCUS Climate Security Digital Methods Team"
 output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    theme: readable
   pdf_document:
     toc: true
     toc_depth: 2
     latex_engine: xelatex
     keep_tex: true
-  html_document:
-    toc_depth: 2
-    theme: readable
 ---
 
 # 1. Introduction
 
-This presents a comprehensive multi-dimensional analysis of Telegram messages processed through a full R-based analytical pipeline.
+This presents a comprehensive multi-dimensional analysis of Telegram messages processed through a full R-based analytical pipeline.\
 
 It includes:
 
@@ -32,7 +33,7 @@ It includes:
 
 # 2. Dataset Summary
 
-Overview of the data scope, including the number of messages, date range, channels analyzed, and basic metadata indicators.
+Overview of the data scope, including the number of messages, date range, channels analyzed, and basic metadata indicators.\
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -63,7 +64,7 @@ if (file.exists(here("outputs/overview/dataset_overview.csv"))) {
 
 # 3. Temporal Trends
 
-This section illustrates the dynamics of message activity over time, with plots for daily, weekly, monthly, and hourly patterns.
+This section illustrates the dynamics of message activity over time, with plots for daily, weekly, monthly, and hourly patterns.\
 
 ## Daily Temporal Trends
 
@@ -75,6 +76,7 @@ if (file.exists(here("outputs/temporal_analysis/temporal_trends.png"))) {
 }
 ```
 
+
 ## Weekly Patterns
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
@@ -85,6 +87,7 @@ if (file.exists(here("outputs/temporal_analysis/weekly_patterns.png"))) {
 }
 ```
 
+
 ## Monthly Patterns
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
@@ -94,6 +97,7 @@ if (file.exists(here("outputs/temporal_analysis/monthly_patterns.png"))) {
   cat("Plot not found: monthly_patterns.png")
 }
 ```
+
 
 ## Hourly Patterns
 
@@ -109,7 +113,7 @@ if (file.exists(here("outputs/temporal_analysis/hourly_patterns.png"))) {
 
 # 4. Sentiment Analysis and Emotion Detection
 
-This section reveals emotional trends and variations across the dataset, providing visualizations such as emotion heatmaps and sentiment distributions.
+This section reveals emotional trends and variations across the dataset, providing visualizations such as emotion heatmaps and sentiment distributions.\
 
 ## Emotion Heatmap
 
@@ -149,11 +153,11 @@ if (file.exists(here("outputs/sentiment_analysis/monthly_emotions.csv"))) {
 
 # 5. Popularity and Virality Metrics
 
-This section shows the most influential channels and the most viral forwarded sources through ranked tables and scatterplots showing relationships between activity and audience reach. It also includes analyses of mentions and hashtags, represented by frequency tables and visual summaries.
+This section shows the most influential channels and the most viral forwarded sources through ranked tables and scatterplots showing relationships between activity and audience reach. It also includes analyses of mentions and hashtags, represented by frequency tables and visual summaries.\
 
-## CHANNEL INFLUENCE ANALYSIS
+## Channel Influence Analysis\
 
-### Top 20 Most Influential Channels
+#### Top 20 Most Influential Channels
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/top_channels.png"))) {
@@ -164,7 +168,7 @@ if (file.exists(here("outputs/popularity/top_channels.png"))) {
 
 ```
 
-### Channel Activity vs. Reach
+#### Channel Activity vs. Reach
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/channel_activity.png"))) {
@@ -175,7 +179,7 @@ if (file.exists(here("outputs/popularity/channel_activity.png"))) {
 
 ```
 
-### Top 15 Influential Channels Table
+#### Top 15 Influential Channels Table
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/top_channels.csv"))) {
@@ -189,9 +193,9 @@ if (file.exists(here("outputs/popularity/top_channels.csv"))) {
 }
 ```
 
-## FORWARDED SOURCES ANALYSIS
+## Forwarded Sources Analysis\
 
-### Top 15 Forwarded Sources Table
+#### Top 15 Forwarded Sources Table
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/top_forwarded.csv"))) {
@@ -205,7 +209,7 @@ if (file.exists(here("outputs/popularity/top_forwarded.csv"))) {
 }
 ```
 
-### Top 15 Most Viral Forwarded Sources
+#### Top 15 Most Viral Forwarded Sources
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/forwarded_sources.png"))) {
@@ -215,7 +219,7 @@ if (file.exists(here("outputs/popularity/forwarded_sources.png"))) {
 }
 ```
 
-### Forwarding Behavior Analysis
+#### Forwarding Behavior Analysis
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/forwarding_behavior.png"))) {
@@ -225,9 +229,9 @@ if (file.exists(here("outputs/popularity/forwarding_behavior.png"))) {
 }
 ```
 
-## MENTIONS AND HASHTAGS
+## Mentions & Hashtags\
 
-### Top 15 Most Mentioned Users
+#### Top 15 Most Mentioned Users
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/entities/top_mentions.png"))) {
@@ -237,7 +241,7 @@ if (file.exists(here("outputs/popularity/entities/top_mentions.png"))) {
 }
 ```
 
-### Mentions Table
+#### Mentions Table
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/entities/mentions.csv"))) {
@@ -250,7 +254,7 @@ if (file.exists(here("outputs/popularity/entities/mentions.csv"))) {
 }
 ```
 
-### Top 15 Most Used Hashtags
+#### Top 15 Most Used Hashtags
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/entities/top_hashtags.png"))) {
@@ -260,7 +264,7 @@ if (file.exists(here("outputs/popularity/entities/top_hashtags.png"))) {
 }
 ```
 
-### Hashtags Table
+#### Hashtags Table
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/entities/hashtags.csv"))) {
@@ -277,26 +281,25 @@ if (file.exists(here("outputs/popularity/entities/hashtags.csv"))) {
 
 # 6. Network Analysis
 
-This section presents the **network analyses** generated from the dataset.
+This section presents the network analyses generated from the dataset.\
 
-## Overview
+### Overview
 
-The following **three bipartite networks** were created:
+The following three bipartite networks were created:
 
 | Network          | Nodes (source → target)                 | Edge weight            | Node types    |
 |-----------------|--------------------|-----------------|-----------------|
 | Forwarding       | `fwd_from_author_username` → `username` | Number of forwards     | chat          |
 | Mentions         | `username` → `@mention`                 | Number of mentions     | chat, mention |
-| Channel-Hashtags | `username` → `#hashtag`                 | Number of hashtag uses | chat, hashtag |
+| Channel-Hashtags | `username` → `#hashtag`                 | Number of hashtag uses | chat, hashtag |\\
 
-### Notes on Node Types:
+#### Notes on Node Types:\
 
--   **chat** → Telegram chat: can be a **channel** or a **group**.
-    -   In Telegram exports, `username` and `fwd_from_author_username` represent **chat usernames**.
+-   **chat** → Telegram chat: can be a **channel** or a **group**. In Telegram exports, `username` and `fwd_from_author_username` represent chat usernames.
 -   **mention** → Mentioned `@username` → can be a **user**, **chat**, or **bot**.
--   **hashtag** → `#hashtag` extracted from message text.
+-   **hashtag** → `#hashtag` extracted from message text.\
 
-**The author (`author_username`) is not used** in these networks — the focus is on chat-based relations.
+Note: The author (`author_username`) is not used in these networks — the focus is on chat-based relations.\
 
 ## 6.1 Forwarding Network
 
@@ -348,7 +351,7 @@ The networks provide insights into:
 
 -   Mention patterns between Telegram entities
 
--   Top hashtags used by chats
+-   Top hashtags used by chats\
 
 These nodes + edges CSVs are fully compatible with:
 
@@ -364,7 +367,7 @@ These nodes + edges CSVs are fully compatible with:
 
 # 7. Topic Modeling
 
-This section presents the results of an unsupervised topic modeling analysis using the Latent Dirichlet Allocation (LDA) algorithm.
+This section presents the results of an unsupervised topic modeling analysis using the Latent Dirichlet Allocation (LDA) algorithm.\
 
 ## 7.1 Overview
 
@@ -379,7 +382,7 @@ The modeling process includes:
 2.  Document-Term Matrix (DTM) construction\
 3.  Fitting the LDA model\
 4.  Extraction of top terms per topic\
-5.  Assignment of dominant topic to each document
+5.  Assignment of dominant topic to each document\
 
 ## 7.2 Top Terms per Topic
 
@@ -423,9 +426,9 @@ source("generate_wordcloud_chunks.R")
 knitr::include_graphics(here::here("outputs", "topic_modeling", "combined_wordclouds_grid.png"))
 ```
 
-## 7.5 Distribution of Topics Across Messages
+## 7.5 Notes on Interpretation
 
-Notes on Interpretation: Topics are automatically generated clusters of co-occurring terms. Interpretation requires human inspection of top words. Messages were assigned to the topic with the highest probability (gamma).
+Topics are automatically generated clusters of co-occurring terms. Interpretation requires human inspection of top words. Messages were assigned to the topic with the highest probability (gamma).
 
 The topic modeling results can be used to guide:
 
@@ -473,7 +476,7 @@ This report presented a modular and extensible pipeline for analyzing Telegram d
 -   **Channel influence** and **forwarding networks**, capturing content amplification;
 -   **Entity extraction**, such as hashtags and mentions;
 -   **Topic modeling**, with customizable number of topics and stopword filters;
--   **External link sharing**, reflecting the circulation of information beyond Telegram.
+-   **External link sharing**, reflecting the circulation of information beyond Telegram.\
 
 This pipeline enables researchers and analysts to adapt it to multilingual datasets and evolving research questions related to digital platforms, disinformation, political communication, and OSINT (Open Source Intelligence).
 
