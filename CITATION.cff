@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the following metadata."
+title: "Telegram Analytics"
+version: 1.0.0
+doi: https://doi.org/10.5281/zenodo.15645166 
+date-released: 2025-06-12
+authors:
+  - family-names: Tucci
+    given-names: Giulia
+    orcid: https://orcid.org/0000-0002-1829-2967
+    affiliation: CGIAR FOCUS Climate Security | International Center for Tropical Agriculture (CIAT)
+license: MIT
+repository-code: https://github.com/gtucci/Telegram-Analytics
+url: https://github.com/gtucci/Telegram-Analytics
+abstract: |
+  Telegram Analytics is a modular and reproducible pipeline developed in R for analyzing messages extracted from public Telegram channels. The project includes sentiment analysis, network metrics, topic modeling, and other features based on a structured data processing workflow. Developed under the CGIAR Climate Security Digital Methods initiative.
+
+https://doi.org/10.5281/zenodo.15645166
