@@ -106,7 +106,7 @@ main_analysis.R             # Master pipeline script
 
 # Authors and Acknowledgment
 
-Telegram Analytics was developed by Giulia Tucci under the **CGIAR FOCUS** **Climate Security Digital Methods** team. The project was conducted with support from the CGIAR Science Programs **\###**. I would like to thank all funders who supported this research through their contributions to the [CGIAR Trust Fund](https://www.cgiar.org/funders/).
+Telegram Analytics was developed by Giulia Tucci under the **CGIAR FOCUS** **Climate Security Digital Methods team**. The project was conducted with support from the CGIAR Science Programs. I would like to thank all funders who supported this research through their contributions to the [CGIAR Trust Fund](https://www.cgiar.org/funders/).
 
 ------------------------------------------------------------------------
 
