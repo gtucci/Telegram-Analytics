@@ -48,11 +48,13 @@ main_analysis.R             # Master pipeline script
 
 ## How to Run the Pipeline
 
-1️⃣ Open `Telegram-Analytics.Rproj` in **RStudio**.
+1️⃣ Download and extract the project ZIP file: [![Download ZIP](https://img.shields.io/badge/Download-ZIP-blue)](https://github.com/gtucci/Telegram-Analytics/archive/refs/heads/main.zip)
 
-2️⃣ Run the master script: `source("main_analysis.R") `
+2️⃣ Open `Telegram-Analytics.Rproj` in **RStudio**.
 
-3️⃣ The pipeline will prompt you to:
+3️⃣ Run the master script: `source("main_analysis.R") `
+
+4️⃣ The pipeline will prompt you to:
 
 -   Select input data: A folder containing .csv or .tsv files OR a single file anywhere on disk
 -   Select language for sentiment analysis (NRC-supported languages)
@@ -63,7 +65,7 @@ main_analysis.R             # Master pipeline script
     -   Italian
     -   Portuguese
 
-4️⃣ The pipeline will process all steps and generate:
+5️⃣ The pipeline will process all steps and generate:
 
 -   **Cleaned data** → `/data_clean/`
 -   **Plots and CSVs** → `/outputs/`
@@ -105,12 +107,19 @@ main_analysis.R             # Master pipeline script
 ------------------------------------------------------------------------
 
 
-------------------------------------------------------------------------
 
 # Authors and Acknowledgment
 
-
 Telegram Analytics was developed by Giulia Tucci under the **CGIAR FOCUS** **Climate Security Digital Methods team**. The project was conducted with support from the CGIAR Science Programs. I would like to thank all funders who supported this research through their contributions to the [CGIAR Trust Fund](https://www.cgiar.org/funders/).
+
+## How to Cite
+If you use this project, please cite it as:
+
+> Tucci, G. (2025). *Telegram Analytics: A modular pipeline for analyzing public Telegram data* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.15645166
+> 
+> 📌 Citation metadata is available in [CITATION.cff](./CITATION.cff) and via the **“Cite this repository”** button on GitHub.
+> 
+>  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15645166.svg)](https://doi.org/10.5281/zenodo.15645166)
 
 ------------------------------------------------------------------------
 
