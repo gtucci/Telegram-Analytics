@@ -157,7 +157,9 @@ This section shows the most influential channels and the most viral forwarded so
 
 ## Channel Influence Analysis\
 
+
 #### Top 20 Most Influential Channels
+
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/top_channels.png"))) {
@@ -168,7 +170,9 @@ if (file.exists(here("outputs/popularity/top_channels.png"))) {
 
 ```
 
+
 #### Channel Activity vs. Reach
+
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/channel_activity.png"))) {
@@ -179,7 +183,9 @@ if (file.exists(here("outputs/popularity/channel_activity.png"))) {
 
 ```
 
+
 #### Top 15 Influential Channels Table
+
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/top_channels.csv"))) {
@@ -193,9 +199,12 @@ if (file.exists(here("outputs/popularity/top_channels.csv"))) {
 }
 ```
 
+
 ## Forwarded Sources Analysis\
 
+
 #### Top 15 Forwarded Sources Table
+
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE, out.width="80%"}
 if (file.exists(here("outputs/popularity/top_forwarded.csv"))) {
@@ -208,6 +217,7 @@ if (file.exists(here("outputs/popularity/top_forwarded.csv"))) {
   cat("CSV not found: top_forwarded.csv")
 }
 ```
+
 
 #### Top 15 Most Viral Forwarded Sources
 
