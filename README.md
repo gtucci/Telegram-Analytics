@@ -113,3 +113,10 @@ Telegram Analytics was developed by Giulia Tucci under the **CGIAR FOCUS** **Cli
 # Licence
 
 See the [LICENSE](https://github.com/gtucci/Telegram-Analytics/blob/main/LICENSE) file for license rights and limitations (MIT).
+
+
+------------------------------------------------------------------------
+
+# How to Cite
+
+Tucci, G. (2025). Telegram Analytics: A modular pipeline for analyzing public Telegram data. Retrieved from https://github.com/gtucci/Telegram-Analytics
